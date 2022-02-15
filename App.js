@@ -24,15 +24,19 @@ const Tweets=({navigation})=>(
 const TweetDetails=({route})=>(
   // react native navigation automatically inject its props to all screen component
   //if you are at child component u dont have access to the route so using useRoute Hook 
-  <Screen>
+//header shown is to hide the navigation bar
+<Screen>
     <Text>Tweets Details{route.params .id}</Text>
   </Screen>
 )
 const Stack=createStackNavigator();
 const StackNavigator=()=>(
-  <Stack.Navigator initialRouteName="Tweets">
+  //through passing screenoptions we can set screen navigation bar properties to all screen
+  <Stack.Navigator 
+  screenOptions={{headerStyle:{backgroundColor:"dodgerblue"},headerTintColor:"white"}}
+  >
     <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen name="TweetDetails" component={TweetDetails} options={({route})=>({title:route.params.id})} />
+    <Stack.Screen name="TweetDetails" component={TweetDetails} options={{headerStyle:{backgroundColor:"tomato"},headerTintColor:"white"}} />
 
   </Stack.Navigator>
 )
