@@ -4,11 +4,11 @@ import * as ImagePicker from 'expo-image-picker';
 
 import { StyleSheet, Text, View,Platform, TextInput, alert, Button, Image  } from 'react-native';
 import Screen from './apps/components/Screen';
-
+import {MaterialCommunityIcons} from "@expo/vector-icons"
 //Navigation Library
 import {createStackNavigator} from '@react-navigation/stack'
 import { NavigationContainer,useNavigation } from '@react-navigation/native';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Link=()=>{
   const navigation=useNavigation()
   return(
@@ -29,6 +29,9 @@ const TweetDetails=({route})=>(
     <Text>Tweets Details{route.params .id}</Text>
   </Screen>
 )
+
+const Account=()=>(<Screen><Text>Account</Text></Screen>)
+
 const Stack=createStackNavigator();
 const StackNavigator=()=>(
   //through passing screenoptions we can set screen navigation bar properties to all screen
@@ -40,10 +43,19 @@ const StackNavigator=()=>(
 
   </Stack.Navigator>
 )
+const Tab=createBottomTabNavigator() //tab has two property screen and navigator 
+const TabNavigator=()=>(
+  <Tab.Navigator
+  tabBarOptions={{activeBackgroundColor:"dodgerblue",activeTintColor:"white",inactiveTintColor:"black",inactiveBackgroundColor:"#eee"}}
+  >
+    <Tab.Screen name="Feed" component={Tweets} options={{tabBarIcon:({size,color})=><MaterialCommunityIcons name="home" size={size} color={color}/>}}/>
+    <Tab.Screen name="Account" component={Account}/>    
+  </Tab.Navigator>
+)
 export default function App() {
 return (
 <NavigationContainer>
-  <StackNavigator/>
+  <TabNavigator/>
 </NavigationContainer>
     )
 }
@@ -66,4 +78,7 @@ const styles = StyleSheet.create({
 /**
  * navigation prop only available to screen component 
  * Means if <Stack.Screen/> having child component it has no access to that navigation
+ */
+/**
+ * color pass to tabbarIcon set according to the tint of  text so do size
  */
