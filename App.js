@@ -25,14 +25,14 @@ const TweetDetails=({route})=>(
   // react native navigation automatically inject its props to all screen component
   //if you are at child component u dont have access to the route so using useRoute Hook 
   <Screen>
-    <Text>Tweets Details{route.params.id}</Text>
+    <Text>Tweets Details{route.params .id}</Text>
   </Screen>
 )
 const Stack=createStackNavigator();
 const StackNavigator=()=>(
   <Stack.Navigator initialRouteName="Tweets">
     <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen name="TweetDetails" component={TweetDetails} />
+    <Stack.Screen name="TweetDetails" component={TweetDetails} options={({route})=>({title:route.params.id})} />
 
   </Stack.Navigator>
 )
