@@ -17,9 +17,10 @@ const menuItems=[{
     icon:{
         name:"email",
         backgroundColor: colors.secondary
-    }
+    },
+    targetScreen:"Messages"
 }]
-export default function AccountScreen() {
+export default function AccountScreen({navigation}) {
   return (
     <Screen style={styles.screen}>
         <View style={styles.container}>
@@ -35,12 +36,13 @@ export default function AccountScreen() {
            data={menuItems}
            keyExtractor={item=>item.title}
            ItemSeparatorComponent={ListItemSeprator}
-           renderItem={({item})=><ListItem title={item.title} ImageComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>}/>}
+           renderItem={({item})=><ListItem title={item.title} ImageComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>} onPress={()=>navigation.navigate(item.targetScreen)}/>}
            />
         </View>
         <ListItem
         title="Log Out"
         ImageComponent={<Icon name="logout" backgroundColor='#ffe66d'/>}
+       
         />
     </Screen>
   )

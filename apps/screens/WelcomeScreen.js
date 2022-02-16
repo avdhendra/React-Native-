@@ -4,7 +4,7 @@ import React from 'react';
 import colors from "../config/colors"
 import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import AppButton from '../components/AppButton';
-export default function WelcomeScreen(props) {
+export default function WelcomeScreen({navigation}) {
   return (
    <ImageBackground
    style={styles.background}
@@ -12,8 +12,8 @@ export default function WelcomeScreen(props) {
    >
      <Image  style={styles.logo}source={require("../assets/book-roots.png")}/>
 <View style={styles.buttonsContainer}>
-<AppButton title="Login"/>
-<AppButton title="Sign Up" color='secondary'/>
+<AppButton title="Login" onPress={()=>navigation.navigate("Login")}/>
+<AppButton title="Sign Up" color='secondary' onPress={()=>navigation.navigate("Register")}/>
 </View>
 
    </ImageBackground>

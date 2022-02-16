@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View,Image } from 'react-native'
+import { StyleSheet, Text, View,Image, TouchableWithoutFeedback } from 'react-native'
 import React from 'react';
 import colors from '../config/colors';
 import AppText from "./AppText"
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 
 
-export default function Card({title,subtitle,image,rating}) {
+export default function Card({title,subtitle,image,rating,onPress}) {
   return (
+      <TouchableWithoutFeedback  onPress={onPress}>
     <View>
          <View style={styles.card}>
      <Image style={styles.image} source={image}/>
@@ -19,8 +20,7 @@ export default function Card({title,subtitle,image,rating}) {
     <View style={styles.material}>
     <MaterialCommunityIcons name='star' color={colors.white} size={20} style={[styles.icon,{marginLeft:2,marginTop:1}]}/>
     </View>
-   
-
+    
     
     
     </View>
@@ -29,6 +29,8 @@ export default function Card({title,subtitle,image,rating}) {
  
     </View>
     </View>
+    </TouchableWithoutFeedback>
+
   )
 }
 

@@ -39,9 +39,9 @@ export default function ListItem({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    padding:15,
     alignItems:"center",
     backgroundColor:colors.white
+    ,padding:10
   },
   detailsContainer: {
 marginLeft:10,
@@ -53,12 +53,11 @@ flex:1
     height: 70,
     borderRadius: 35,
     marginLeft:10,
-    marginTop:10,
+    
     
   },
   title: {
     fontWeight: "500",
-    marginTop: 20,
   },
   subTitle: {
     color: colors.medium,

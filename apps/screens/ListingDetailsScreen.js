@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,Image } from 'react-native'
 import React from 'react'
-
-export default function ListingDetailsScreen(props) {
+import colors from '../config/colors'
+import AppText from '../components/AppText';
+import ListItem from '../components/ListItem'
+export default function ListingDetailsScreen({route}) {
+    const listing=route.params;
   return (
     <View>
-    <Image style={styles.image} source={require("../assets/harry.jpg")}/>   
+    <Image style={styles.image} source={listing.image}/>   
    <View style={styles.detailsContainer}>
-   <AppText style={styles.title}>Harry Potter and Prisnor of Askaban</AppText>
-   <AppText style={styles.price} >$30</AppText>
+   <AppText style={styles.title}>{listing.title}</AppText>
+   <AppText style={styles.price} >${listing.price}</AppText>
   <View
   style={styles.userContainer}
   >
@@ -47,6 +50,6 @@ const styles = StyleSheet.create({
                 marginVertical:10
             },
             userContainer:{
-                marginVertical:50
+                marginVertical:5
             }
 })
