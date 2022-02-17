@@ -5,12 +5,12 @@ import AppText from "./AppText"
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 
 
-export default function Card({title,subtitle,image,rating,onPress}) {
+export default function Card({title,subtitle,imageUrl,rating,onPress}) {
   return (
       <TouchableWithoutFeedback  onPress={onPress}>
     <View>
          <View style={styles.card}>
-     <Image style={styles.image} source={image}/>
+     <Image style={styles.image} source={{uri:imageUrl}} />
      
     <View style={styles.detailcontainer}>
     <AppText style={styles.title}>{title}</AppText>
